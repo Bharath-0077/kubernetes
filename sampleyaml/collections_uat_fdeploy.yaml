@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collectionuat
+  namespace: collectionuat
+  labels:
+    app: fuat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fuat
+  template:
+    metadata:
+      labels:
+        app: fuat
+    spec:
+      containers:
+      - name: collectionsuicontainer
+        image: 
+        ports:
+        - containerPort: 80

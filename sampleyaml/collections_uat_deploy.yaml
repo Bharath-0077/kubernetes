@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uatbackendcollectiontest
+  namespace: collectionuat
+  labels:
+    app: uat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uat
+  template:
+    metadata:
+      labels:
+        app: uat
+    spec:
+      containers:
+        - name: uatcollcontainer
+          image:
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: configmap
+              mountPath: /app/app/config/
+      volumes:
+      - configMap:
+          name: collectionconf
+        name: configmap
